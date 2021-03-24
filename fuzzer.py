@@ -32,16 +32,16 @@ def fuzz(target):
         for payload in list:
             req = requests.post(target + payload)
             if payload in req.text:
-                print(payload + ' has been identified in HTTP request')
+                print(payload + ' has been identified in HTTP request\n')
             else:
-                print(payload, ' not identified in HTTP request')
+                print(payload, ' NOT identified in HTTP request\n')
     except:
         print('HTTP request not available')
     
 
 parser = argparse.ArgumentParser(description='A fuzzer program that identifies Cross-Site Scripting bugs')
-parser.add_argument('-u', dest='url', help='Link that will be fuzzed by the program', default = '')
-parser.add_argument('-r', dest='fuzzlist', help='A fuzzing wordlist that will be injected into the link', default = '')
+parser.add_argument('-u', dest='url', help='link that will be fuzzed by the program', default = '')
+parser.add_argument('-r', dest='fuzzlist', help='a fuzzing wordlist that will be injected into the link', default = '')
 args = parser.parse_args()
 
 if args.url == '':
